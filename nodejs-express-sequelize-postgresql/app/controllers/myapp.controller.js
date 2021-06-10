@@ -121,5 +121,14 @@ exports.deleteAll = (req, res) => {
 };
 
 exports.findAllPublished = (req, res) => {
-    
+    MyApp.findAll({ where: { published: true }})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving items."
+            });
+        });
 };
