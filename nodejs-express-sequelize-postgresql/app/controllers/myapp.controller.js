@@ -27,11 +27,33 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    
+    const title = req.query.title;
+    var condition = title ? { title: { [Op.iLike]: `%${title}%`}} : null;
+
+    MyApp.findAll({ where: condition})
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving my app."
+            });
+        });
 };
 
 exports.findOne = (req, res) => {
-    
+    const id = req.params.id;
+
+    MyApp.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error retrieving my app with id="+id
+            });
+        });
 };
 
 exports.update = (req, res) => {
