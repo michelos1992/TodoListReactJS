@@ -57,7 +57,27 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    
+    const id = req.params.id;
+
+    MyApp.update(req.body, {
+        where: { id: id }
+    })
+    .then(num => {
+        if (num == 1) {
+            res.send({
+                message: "My app was updated success."
+            });
+        } else {
+            res.send({
+                message: `Cant update my app with id=${id}. Maybe app wasn found or req.body is empty!`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error updating app with id="+id
+        });
+    });
 };
 
 exports.delete = (req, res) => {
