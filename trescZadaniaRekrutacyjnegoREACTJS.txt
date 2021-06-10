@@ -1,0 +1,28 @@
+Piotr Kania
+	
+13:50 (8 godzin temu)
+	
+do mnie
+
+Hej Michał,
+
+zainteresowało nas Twoje CV. Zanim jednak zaprosimy Cię na rozmowę kwalifikacyjną, prosimy o wykonanie prostego zadania, które pozwoli nam sprawdzić jak poruszasz się po technologiach, które będą obowiązywać na Twoim stanowisku.
+
+Termin na wykonanie zadania: 24.05.2021
+
+Treść zadania
+Stworzyć listę TODO w React.js z CRUD (pełna obsługa API).
+Wymagania/skorzystaj z:
+- Routing w react router (np. do osobnych widoków zadań, podgląd konkretnego zadania)
+
+- Możliwość wyszukiwania notatki po treści
+
+- Fetch API, komunikacja z serwerem - wykorzystać https://gorest.co.in API z todos
+
+- Recoil - do:
+     - dynamiczna aktualizacja ilości znaków
+     - odznaczania wykonania zadania
+     - licznik zakończonych i niezakończonych zadań
+     - ukrywanie zakończonych zadań
+	 
+- Theme UI do styli i komponentów
