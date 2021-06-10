@@ -81,11 +81,43 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    
+    const id = req.params.id;
+
+    MyApp.destroy({
+        where: { id: id }
+    })
+    .then(num => {
+        if (num == 1) {
+            res.send({
+                message: "My app was deleted success."
+            });
+        }else {
+            res.send({
+                message: `Cant delete app with id=${id}. Maybe app was not found`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Cant delete item with id="+id
+        });
+    });
 };
 
 exports.deleteAll = (req, res) => {
-    
+    MyApp.destroy({
+        where: {},
+        truncate: false
+    })
+    .then(nums => {
+        res.send({ message: `${nums} my app were deleted success!`});
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+                err.message || "Some error occurred while removing all items."
+        });
+    });
 };
 
 exports.findAllPublished = (req, res) => {
