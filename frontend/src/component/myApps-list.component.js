@@ -159,7 +159,7 @@ export default class MyAppsList extends Component {
 
               <Link
                 to={"/myapps/" + currentMyApp.id}
-                className="badge badge-warning"
+                className="btn btn-warning"
               >
                 Edit
               </Link>
