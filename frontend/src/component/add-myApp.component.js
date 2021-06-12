@@ -1,8 +1,9 @@
 import { response } from 'express';
 import React, { Component } from 'react';
-import MyAppDataService from '../services/myApp.service';
+//import MyAppDataService from '../services/myApp.service';
 
 export default class AddMyApp extends Component {
+   
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -19,13 +20,14 @@ export default class AddMyApp extends Component {
       submitted: false
     };
   }
+  
 
   onChangeTitle(e) {
     this.setState({
       title: e.target.value
     });
   }
-
+ 
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
@@ -38,21 +40,21 @@ export default class AddMyApp extends Component {
       description: this.state.description
     };
 
-    MyAppDataService.create(data)
-      .then(response => {
-        this.setState({
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published,
+    // MyAppDataService.create(data)
+    //   .then(response => {
+    //     this.setState({
+    //       id: response.data.id,
+    //       title: response.data.title,
+    //       description: response.data.description,
+    //       published: response.data.published,
 
-          submitted: true
-        });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    //       submitted: true
+    //     });
+    //     console.log(response.data);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //   });
   }
 
   newMyApp() {
@@ -71,8 +73,8 @@ export default class AddMyApp extends Component {
       <div className="submit-form">
         {this.state.submitted ? (
           <div>
-            <h4>U submitted success</h4>
-            <button className="btn btn-success" onClick={this.newMyApp}>
+            <h4>You submitted successfully!</h4>
+            <button className="btn btn-success" onClick={this.newTutorial}>
               Add
             </button>
           </div>
@@ -86,10 +88,11 @@ export default class AddMyApp extends Component {
                 id="title"
                 required
                 value={this.state.title}
-                onChange={this.state.title}
+                onChange={this.onChangeTitle}
                 name="title"
               />
             </div>
+
             <div className="form-group">
               <label htmlFor="description">Description</label>
               <input
@@ -98,12 +101,12 @@ export default class AddMyApp extends Component {
                 id="description"
                 required
                 value={this.state.description}
-                onChange={this.state.description}
+                onChange={this.onChangeDescription}
                 name="description"
               />
             </div>
 
-            <button onClick={this.saveMyApp} className="btn btn-success">
+            <button onClick={this.saveTutorial} className="btn btn-success">
               Submit
             </button>
           </div>
@@ -111,4 +114,5 @@ export default class AddMyApp extends Component {
       </div>
     );
   }
+
 }
