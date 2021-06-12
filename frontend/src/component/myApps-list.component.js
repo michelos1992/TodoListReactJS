@@ -137,7 +137,7 @@ export default class MyAppsList extends Component {
         <div className="col-md-6">
           {currentMyApp ? (
             <div>
-              <h4>My App</h4>
+              <h4>Details</h4>
               <div>
                 <label>
                   <strong>Title:</strong>
@@ -168,7 +168,7 @@ export default class MyAppsList extends Component {
             <div>
               <br />
               <p>
-                Please click on a my app...
+                Please click on an item...
               </p>
             </div>
           )}
