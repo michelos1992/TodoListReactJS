@@ -1,9 +1,7 @@
-import { response } from 'express';
 import React, { Component } from 'react';
-//import MyAppDataService from '../services/myApp.service';
+import MyAppDataService from '../services/myApp.service';
 
 export default class AddMyApp extends Component {
-   
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -20,7 +18,6 @@ export default class AddMyApp extends Component {
       submitted: false
     };
   }
-  
 
   onChangeTitle(e) {
     this.setState({
@@ -40,21 +37,21 @@ export default class AddMyApp extends Component {
       description: this.state.description
     };
 
-    // MyAppDataService.create(data)
-    //   .then(response => {
-    //     this.setState({
-    //       id: response.data.id,
-    //       title: response.data.title,
-    //       description: response.data.description,
-    //       published: response.data.published,
+    MyAppDataService.create(data)
+      .then(response => {
+        this.setState({
+          id: response.data.id,
+          title: response.data.title,
+          description: response.data.description,
+          published: response.data.published,
 
-    //       submitted: true
-    //     });
-    //     console.log(response.data);
-    //   })
-    //   .catch(e => {
-    //     console.log(e);
-    //   });
+          submitted: true
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
   newMyApp() {
