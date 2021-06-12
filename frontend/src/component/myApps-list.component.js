@@ -108,72 +108,72 @@ export default class MyAppsList extends Component {
               </button>
             </div>
           </div>
-          <div className="col-md-6">
-            <h4>My apps List</h4>
+        </div>
+        <div className="col-md-6">
+          <h4>My apps List</h4>
 
-            <ul className="list-group">
-              {myapps && myapps.map((myapp, index) => (
-                <li
-                  className={
-                    "list-group-item " + (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActiveMyApp(myapp, index)}
-                  key={index}
-                >
-                  {myapp.title}
-                </li>
-              ))}
-            </ul>
+          <ul className="list-group">
+            {myapps && myapps.map((myapp, index) => (
+              <li
+                className={
+                  "list-group-item " + (index === currentIndex ? "active" : "")
+                }
+                onClick={() => this.setActiveMyApp(myapp, index)}
+                key={index}
+              >
+                {myapp.title}
+              </li>
+            ))}
+          </ul>
 
-            <button 
-              className="m-3 btn btn-sm btn-danger"
-              onClick={this.removeAllMyApps}
-            >
-              Remove All
-            </button>
-          </div>
+          <button 
+            className="m-3 btn btn-sm btn-danger"
+            onClick={this.removeAllMyApps}
+          >
+            Remove All
+          </button>
+        </div>
 
-          <div className="col-md-6">
-            {currentMyApp ? (
+        <div className="col-md-6">
+          {currentMyApp ? (
+            <div>
+              <h4>My App</h4>
               <div>
-                <h4>My App</h4>
-                <div>
-                  <label>
-                    <strong>Title:</strong>
-                  </label>{" "}
-                  {currentMyApp.title}
-                </div>
-                <div>
-                  <label>
-                    <strong>Description:</strong>
-                  </label>{" "}
-                  {currentMyApp.description}
-                </div>
-                <div>
-                  <label>
-                    <strong>Status:</strong>
-                  </label>{" "}
-                  {currentMyApp.published ? "Published" : "Pending"}
-                </div>
-
-                <Link
-                  to={"/myapps/" + currentMyApp.id}
-                  className="badge badge-warning"
-                >
-                  Edit
-                </Link>
+                <label>
+                  <strong>Title:</strong>
+                </label>{" "}
+                {currentMyApp.title}
               </div>
-            ) : (
               <div>
-                <br />
-                <p>
-                  Please click on a my app...
-                </p>
+                <label>
+                  <strong>Description:</strong>
+                </label>{" "}
+                {currentMyApp.description}
               </div>
-            )}
-          </div>
+              <div>
+                <label>
+                  <strong>Status:</strong>
+                </label>{" "}
+                {currentMyApp.published ? "Published" : "Pending"}
+              </div>
+
+              <Link
+                to={"/myapps/" + currentMyApp.id}
+                className="badge badge-warning"
+              >
+                Edit
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <br />
+              <p>
+                Please click on a my app...
+              </p>
+            </div>
+          )}
         </div>
       </div>
-    )
+    );
   }
 }

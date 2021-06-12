@@ -12,17 +12,17 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <a href="/api/myapps" className="navbar-brand">
+          <a href="/myapps" className="navbar-brand">
             MichalWojciech
           </a>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/api/myapps"} className="nav-link">
+              <Link to={"/myapps"} className="nav-link">
                 My apps
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/api/add"} className="nav-link">
+              <Link to={"/add"} className="nav-link">
                 Add
               </Link>
             </li>
