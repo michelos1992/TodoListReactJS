@@ -5,18 +5,12 @@ import { Link } from 'react-router-dom';
 export default class MyAppsList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
-    this.retrieveMyApps = this.retrieveMyApps.bind(this);
     this.refreshList = this.refreshList.bind(this);
-    this.setActiveMyApp = this.setActiveMyApp.bind(this);
-    this.removeAllMyApps = this.removeAllMyApps.bind(this);
-    this.searchTitle = this.searchTitle.bind(this);
 
     this.state = {
       myapps: [],
       currentMyApp: null,
-      currentIndex: -1,
-      searchTitle: ""
+      currentIndex: -1
     };
   }
 
@@ -72,16 +66,16 @@ export default class MyAppsList extends Component {
   }
 
   searchTitle() {
-    MyAppDataService.findByTitle(this.state.searchTitle)
-      .then(response => {
-        this.setState({
-          myapps: response.data
-        });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    // MyAppDataService.findByTitle(this.state.searchTitle)
+    //   .then(response => {
+    //     this.setState({
+    //       myapps: response.data
+    //     });
+    //     console.log(response.data);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //   });
   }
 
   render() {
@@ -111,27 +105,14 @@ export default class MyAppsList extends Component {
         </div>
         <div className="col-md-6">
           <h4>My apps List</h4>
-
           <ul className="list-group">
-            {myapps && myapps.map((myapp, index) => (
-              <li
-                className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
-                }
-                onClick={() => this.setActiveMyApp(myapp, index)}
-                key={index}
-              >
-                {myapp.title}
+            {(
+              <li>
+                {myapps.data}
               </li>
-            ))}
+            )}
           </ul>
 
-          <button 
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllMyApps}
-          >
-            Remove All
-          </button>
         </div>
 
         <div className="col-md-6">
@@ -146,19 +127,13 @@ export default class MyAppsList extends Component {
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
-                </label>{" "}
-                {currentMyApp.description}
-              </div>
-              <div>
-                <label>
                   <strong>Status:</strong>
                 </label>{" "}
-                {currentMyApp.published ? "Published" : "Pending"}
+                {currentMyApp.completed ? "Published" : "Pending"}
               </div>
 
               <Link
-                to={"/myapps/" + currentMyApp.id}
+                to={"/" + currentMyApp.id}
                 className="btn btn-warning"
               >
                 Edit

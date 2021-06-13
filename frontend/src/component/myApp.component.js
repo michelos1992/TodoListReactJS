@@ -4,19 +4,18 @@ import MyAppDataService from '../services/myApp.service';
 export default class MyApp extends Component {
   constructor(props) {
     super(props);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    // this.onChangeTitle = this.onChangeTitle.bind(this);
+    // this.onChangeDescription = this.onChangeDescription.bind(this);
     this.getMyApp = this.getMyApp.bind(this);
-    this.updatePublished = this.updatePublished.bind(this);
-    this.updateMyApp = this.updateMyApp.bind(this);
-    this.deleteMyApp = this.deleteMyApp.bind(this);
+    // this.updatePublished = this.updatePublished.bind(this);
+    // this.updateMyApp = this.updateMyApp.bind(this);
+    // this.deleteMyApp = this.deleteMyApp.bind(this);
 
     this.state = {
       currentMyApp: {
         id: null,
         title: "",
-        description: "",
-        published: false
+        completed: false
       },
       message: ""
     };
@@ -130,7 +129,7 @@ export default class MyApp extends Component {
                   className="form-control"
                   id="title"
                   value={currentMyApp.title}
-                  onChange={this.onChangeTitle}
+                  //onChange={this.onChangeTitle}
                 />
               </div>
               <div className="form-group">
@@ -140,46 +139,34 @@ export default class MyApp extends Component {
                   className="form-control"
                   id="description"
                   value={currentMyApp.description}
-                  onChange={this.onChangeDescription}
+                  //onChange={this.onChangeDescription}
                 />
               </div>
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentMyApp.published ? "Published" : "Pending"}
+                {currentMyApp.completed ? "Published" : "Pending"}
               </div>
             </form>
 
             {currentMyApp.published ? (
               <button 
                 className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(false)}
+                //onClick={() => this.updatePublished(false)}
               >
                 UnPublish
               </button>
             ) : (
               <button 
                 className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(true)}
+                //onClick={() => this.updatePublished(true)}
               >
                 Publish
               </button>
             )}
-            <button 
-              className="badge badge-danger mr-2"
-              onClick={this.deleteMyApp}
-            >
-              Delete
-            </button>
 
-            <button 
-              type="submit"
-              className="badge badge-success"
-              onClick={this.updateMyApp}
-            >
-              Update
-            </button>
+            
             <p>{this.state.message}</p>
           </div>
         ) : (
