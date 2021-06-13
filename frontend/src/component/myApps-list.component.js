@@ -93,16 +93,6 @@ export default class MyAppsList extends Component {
       newElements.isCompleted = false;
       this.setState({myapp: newElements});
     }
-    
-    //this.setState({myapp: newElements});
-    // MyAppDataService.update(
-    //   this.state.newElements.id,
-    //   this.state.newElementsa
-    // )
-    // const nowe = MyAppDataService.getAll();
-    // console.log(this.nowe);
-    //debugger;
-    //myapp.isCompleted === false
   }
 
   render() {
