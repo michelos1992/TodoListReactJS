@@ -13,7 +13,8 @@ exports.create = (req, res) => {
     const myapp = {
         title: req.body.title,
         description: req.body.description,
-        published: req.body.published ? req.body.published : false
+        published: req.body.published ? req.body.published : false,
+        isCompleted: req.body.isCompleted ? req.body.isCompleted : false
     };
 
     MyApp.create(myapp).then(data => {

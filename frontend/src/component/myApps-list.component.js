@@ -84,8 +84,18 @@ export default class MyAppsList extends Component {
       });
   }
 
+  markCompleted(myapp, id) {
+    console.log("id======== :"+ id);
+    const newElements = myapp;
+    console.log(newElements);
+    newElements.isCompleted = true;
+
+    this.setState({myapp: newElements});
+}
+
   render() {
     const { searchTitle, myapps, currentMyApp, currentIndex } = this.state;
+    const elementID = this.state.id;
 
     return (
       <div className="list row">
@@ -163,6 +173,7 @@ export default class MyAppsList extends Component {
               >
                 Edit
               </Link>
+              <button onClick={() => this.markCompleted(currentMyApp, currentMyApp.id)}>Zakończone</button>
             </div>
           ) : (
             <div>
