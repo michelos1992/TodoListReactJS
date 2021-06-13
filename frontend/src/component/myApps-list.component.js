@@ -16,7 +16,8 @@ export default class MyAppsList extends Component {
       myapps: [],
       currentMyApp: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchTitle: "",
+      counttTrue: 0
     };
   }
 
@@ -43,6 +44,7 @@ export default class MyAppsList extends Component {
       .catch(e => {
         console.log(e);
       });
+      console.log("jeste tutaj")
   }
 
   refreshList() {
@@ -95,10 +97,36 @@ export default class MyAppsList extends Component {
     }
   }
 
-  render() {
-    const { searchTitle, myapps, currentMyApp, currentIndex } = this.state;
-    const elementID = this.state.id;
+  countIsCompletedTrue(myapp) {
+    //this.retrieveMyApps();
+    //Zthis.retrieveMyApps();
+    const tabb = myapp;
+    console.log("asdfasdf" + myapp);
+    var temp = 0;
+    tabb.forEach((element) => {
+      if(element.isCompleted === true) {
+        temp = temp + 1;
+      }
+    });
+    console.log("count: " + temp);
+    this.setState({counttTrue: temp});
+  }
+  // countIsCompletedFalse() {
+  //   const allItems = this.retrieveMyApps();
+  //   let countFalse = 0;
+  //   allItems.forEach(element => {
+  //     if(element.isCompleted===false) {
+  //       countFalse+=1;
+  //     }
+  //   });
+  //   console.log("false ilosc: " + true);
+  //   return countFalse;
+  // }
 
+  render() {
+    const { searchTitle, myapps, currentMyApp, currentIndex, counttTrue } = this.state;
+    const countsTrue = this.countIsCompletedTrue(myapps);
+    //const countsFalse = this.countIsCompletedFalse();
     return (
       <div className="list row">
         <div className="col-md-8">
@@ -123,6 +151,10 @@ export default class MyAppsList extends Component {
         </div>
         <div className="col-md-6">
           <h4>My apps List</h4>
+
+          <div className="row">
+            true {countsTrue}
+          </div>
 
           <ul className="list-group">
             {myapps && myapps.map((myapp, index) => (
