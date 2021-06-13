@@ -85,13 +85,25 @@ export default class MyAppsList extends Component {
   }
 
   markCompleted(myapp, id) {
-    console.log("id======== :"+ id);
     const newElements = myapp;
-    console.log(newElements);
-    newElements.isCompleted = true;
-
-    this.setState({myapp: newElements});
-}
+    if(newElements.isCompleted === false) {
+      newElements.isCompleted = true;
+      this.setState({myapp: newElements});
+    }else {
+      newElements.isCompleted = false;
+      this.setState({myapp: newElements});
+    }
+    
+    //this.setState({myapp: newElements});
+    // MyAppDataService.update(
+    //   this.state.newElements.id,
+    //   this.state.newElementsa
+    // )
+    // const nowe = MyAppDataService.getAll();
+    // console.log(this.nowe);
+    //debugger;
+    //myapp.isCompleted === false
+  }
 
   render() {
     const { searchTitle, myapps, currentMyApp, currentIndex } = this.state;
@@ -126,7 +138,7 @@ export default class MyAppsList extends Component {
             {myapps && myapps.map((myapp, index) => (
               <li
                 className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
+                  "list-group-item " + (index === currentIndex ? "active " : "")
                 }
                 onClick={() => this.setActiveMyApp(myapp, index)}
                 key={index}
@@ -166,6 +178,9 @@ export default class MyAppsList extends Component {
                 </label>{" "}
                 {currentMyApp.published ? "Published" : "Pending"}
               </div>
+              <div>
+                <strong>{currentMyApp.isCompleted ? "Done" : "Not done"}</strong>
+              </div>
 
               <Link
                 to={"/myapps/" + currentMyApp.id}
@@ -173,7 +188,7 @@ export default class MyAppsList extends Component {
               >
                 Edit
               </Link>
-              <button onClick={() => this.markCompleted(currentMyApp, currentMyApp.id)}>Zakończone</button>
+              <button className="btn btn-secondary" onClick={() => this.markCompleted(currentMyApp, currentMyApp.id)}>Zakończone</button>
             </div>
           ) : (
             <div>
