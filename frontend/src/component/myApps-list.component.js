@@ -16,8 +16,7 @@ export default class MyAppsList extends Component {
       myapps: [],
       currentMyApp: null,
       currentIndex: -1,
-      searchTitle: "",
-      counttTrue: 0
+      searchTitle: ""
     };
   }
 
@@ -122,7 +121,7 @@ export default class MyAppsList extends Component {
 
   render() {
     const { searchTitle, myapps, currentMyApp, currentIndex } = this.state;
-    //const counTrue = this.countIsCompletedTrue.bind(myapps);
+
     return (
       <div className="list row">
         <div className="col-md-8">
