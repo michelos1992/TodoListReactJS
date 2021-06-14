@@ -44,7 +44,6 @@ export default class MyAppsList extends Component {
       .catch(e => {
         console.log(e);
       });
-      console.log("jeste tutaj")
   }
 
   refreshList() {
@@ -109,7 +108,7 @@ export default class MyAppsList extends Component {
       }
     });
     console.log("count: " + temp);
-    this.setState({counttTrue: temp});
+    //this.setState({counttTrue: temp});
   }
   // countIsCompletedFalse() {
   //   const allItems = this.retrieveMyApps();
