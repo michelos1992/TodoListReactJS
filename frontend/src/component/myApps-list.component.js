@@ -97,35 +97,21 @@ export default class MyAppsList extends Component {
   }
 
   countIsCompletedTrue(myapp) {
-    //this.retrieveMyApps();
-    //Zthis.retrieveMyApps();
     const tabb = myapp;
-    console.log("asdfasdf" + myapp);
-    var temp = 0;
+    
+    var countTrue = 0;
     tabb.forEach((element) => {
       if(element.isCompleted === true) {
-        temp = temp + 1;
+        countTrue = countTrue + 1;
       }
     });
-    console.log("count: " + temp);
+    console.log("count: " + countTrue);
     //this.setState({counttTrue: temp});
   }
-  // countIsCompletedFalse() {
-  //   const allItems = this.retrieveMyApps();
-  //   let countFalse = 0;
-  //   allItems.forEach(element => {
-  //     if(element.isCompleted===false) {
-  //       countFalse+=1;
-  //     }
-  //   });
-  //   console.log("false ilosc: " + true);
-  //   return countFalse;
-  // }
 
   render() {
     const { searchTitle, myapps, currentMyApp, currentIndex, counttTrue } = this.state;
     const countsTrue = this.countIsCompletedTrue(myapps);
-    //const countsFalse = this.countIsCompletedFalse();
     return (
       <div className="list row">
         <div className="col-md-8">
