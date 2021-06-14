@@ -11,13 +11,27 @@ export default class MyAppsList extends Component {
     this.setActiveMyApp = this.setActiveMyApp.bind(this);
     this.removeAllMyApps = this.removeAllMyApps.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
+    //this.onChangeIsCompleted = this.onChangeIsCompleted.bind(this);
+    this.updateMyApp = this.updateMyApp.bind(this);
 
     this.state = {
       myapps: [],
       currentMyApp: null,
       currentIndex: -1,
       searchTitle: ""
+      //isCompleted: false
     };
+  }
+
+  onChangeIsCompleted(e) {
+    const isCompleted = e.target.value;
+
+    this.setState(prevState => ({
+      currentMyApp:{
+        ...prevState.currentMyApp,
+        isCompleted: isCompleted
+      }
+    }));
   }
 
   componentDidMount() {
@@ -84,14 +98,32 @@ export default class MyAppsList extends Component {
       });
   }
 
+  updateMyApp() {
+    MyAppDataService.update(
+      this.state.currentMyApp.id,
+      this.state.currentMyApp
+    )
+      .then(response => {
+        console.log(response.data);
+        this.setState({
+          message: "The app was updated success!!"
+        });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
   markCompleted(myapp, id) {
     const newElements = myapp;
     if(newElements.isCompleted === false) {
       newElements.isCompleted = true;
       this.setState({myapp: newElements});
+      this.updateMyApp();
     }else {
       newElements.isCompleted = false;
       this.setState({myapp: newElements});
+      this.updateMyApp();
     }
   }
 
