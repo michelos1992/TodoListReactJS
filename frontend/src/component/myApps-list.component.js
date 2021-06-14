@@ -11,7 +11,6 @@ export default class MyAppsList extends Component {
     this.setActiveMyApp = this.setActiveMyApp.bind(this);
     this.removeAllMyApps = this.removeAllMyApps.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
-    //this.onChangeIsCompleted = this.onChangeIsCompleted.bind(this);
     this.updateMyApp = this.updateMyApp.bind(this);
 
     this.state = {
