@@ -193,7 +193,7 @@ export default class MyAppsList extends Component {
                 onClick={() => this.setActiveMyApp(myapp, index)}
                 key={index}
               >
-                <div className={(myapp.isCompleted===true ? "d-none" : "")}>{myapp.title}</div>
+                {myapp.title}
               </li>
             ))}
           </ul>
