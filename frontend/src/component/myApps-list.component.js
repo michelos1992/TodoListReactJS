@@ -99,19 +99,30 @@ export default class MyAppsList extends Component {
   countIsCompletedTrue(myapp) {
     const tabb = myapp;
     
-    var countTrue = 0;
+    let countTrue = 0;
     tabb.forEach((element) => {
       if(element.isCompleted === true) {
         countTrue = countTrue + 1;
       }
     });
-    console.log("count: " + countTrue);
-    //this.setState({counttTrue: temp});
+    return countTrue;
+  }
+  
+  countIsCompletedFalse(myapp) {
+    const tabb = myapp;
+    
+    let countFalse = 0;
+    tabb.forEach((element) => {
+      if(element.isCompleted === false) {
+        countFalse = countFalse + 1;
+      }
+    });
+    return countFalse;
   }
 
   render() {
-    const { searchTitle, myapps, currentMyApp, currentIndex, counttTrue } = this.state;
-    const countsTrue = this.countIsCompletedTrue(myapps);
+    const { searchTitle, myapps, currentMyApp, currentIndex } = this.state;
+    //const counTrue = this.countIsCompletedTrue.bind(myapps);
     return (
       <div className="list row">
         <div className="col-md-8">
@@ -138,7 +149,8 @@ export default class MyAppsList extends Component {
           <h4>My apps List</h4>
 
           <div className="row">
-            true {countsTrue}
+            <p>Zrobionych: {this.countIsCompletedTrue(myapps)}</p>
+            <p>Nie zrobionych: {this.countIsCompletedFalse(myapps)}</p>
           </div>
 
           <ul className="list-group">
