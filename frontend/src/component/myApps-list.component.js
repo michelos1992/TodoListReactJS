@@ -187,12 +187,13 @@ export default class MyAppsList extends Component {
             {myapps && myapps.map((myapp, index) => (
               <li
                 className={
-                  "list-group-item " + (index === currentIndex ? "active " : "")
+                  "list-group-item " + (index === currentIndex  ? "active " : "")
+                  + (myapp.isCompleted ? "d-none" : "")
                 }
                 onClick={() => this.setActiveMyApp(myapp, index)}
                 key={index}
               >
-                {myapp.title}
+                <div className={(myapp.isCompleted===true ? "d-none" : "")}>{myapp.title}</div>
               </li>
             ))}
           </ul>
