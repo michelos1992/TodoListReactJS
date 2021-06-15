@@ -49,9 +49,8 @@ export default class MyAppsList extends Component {
     MyAppDataService.getAll()
       .then(response => {
         this.setState({
-          myapps: response.data
+          myapps: response.data.data
         });
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
